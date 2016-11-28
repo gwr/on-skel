@@ -17,7 +17,7 @@ include		$(SRC)/Makefile.master
 
 MANSECT= 	7
 
-MANFILES= 	foo.7
+MANFILES=
 
 MANLINKS=
 
