@@ -45,7 +45,6 @@ include ../Makefile.master
 #
 #
 SUBDIRS= \
-	libfoo	\
 	$($(MACH)_SUBDIRS)
 
 i386_SUBDIRS=
@@ -63,7 +62,6 @@ DCSUBDIRS =
 
 
 MSGSUBDIRS=	\
-	libfoo	\
 	$($(MACH)_MSGSUBDIRS)
 
 sparc_MSGSUBDIRS=

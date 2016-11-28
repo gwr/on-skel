@@ -41,8 +41,7 @@ sparc_HDRS=
 GENHDRS=
 
 # Normal headers
-CHKHDRS= \
-	foo.h
+CHKHDRS=
 
 HDRS=	$(GENHDRS) $(CHKHDRS)
 
