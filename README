@@ -39,6 +39,11 @@ to add another driver, library, or command:
 
 	cmd/foo
 
+When doing incremental work in the gate, i.e. fixing
+compilation errors, it's handy to run an editor in a
+"bldenv" environment, as follows:
+	ksh93 tools/bldenv -d myenv.sh
+
 	man/man1/foo.1
 	man/man3x/libfoo.3x
 	man/man7/foo.7
