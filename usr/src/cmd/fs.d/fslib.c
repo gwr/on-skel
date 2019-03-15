@@ -23,8 +23,6 @@
  * Use is subject to license terms.
  */
 
-#pragma ident	"%Z%%M%	%I%	%E% SMI"
-
 #include	<stdio.h>
 #include	<stdarg.h>
 #include	<stdlib.h>
@@ -243,7 +241,7 @@ fsgetmlevel(char *cp)
 	int	mlevel;
 	char	*cp1;
 
-	if (cp == NULL || *cp == NULL || *cp != '/')
+	if (cp == NULL || *cp == '\0' || *cp != '/')
 		return (0);	/* this should never happen */
 
 	mlevel = 1;			/* root (/) is the minimal case */
@@ -387,8 +385,8 @@ cmp_requested_to_actual_options(char *requested_opts, char *actual_opts,
  *			- 1 if maxphys is found
  */
 int
-fsgetmaxphys(int *maxphys, int *error) {
-
+fsgetmaxphys(int *maxphys, int *error)
+{
 	int	gotit = 0;
 	int	fp = open("/", O_RDONLY);
 
