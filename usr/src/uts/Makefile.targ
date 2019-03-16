@@ -70,18 +70,10 @@ $(MODULE).check.targ:	$(BINARY) $(OBJECTS) $(EXTRA_CHECK_OBJS) $(UNIX_O) $(MODST
 #
 #	Module lint library construction targets.
 #
-MOD_LINT_LIB	= $(LINT_LIB_DIR)/llib-l$(LINT_MODULE).ln
+#MOD_LINT_LIB	= $(LINT_LIB_DIR)/llib-l$(LINT_MODULE).ln
+MOD_LINT_LIB	= # nothing (no more lint)
 
-$(MOD_LINT_LIB):	$(LINT_LIB_DIR) $(LINTS)
-	@-$(ECHO) "\n$(OBJS_DIR)/$(MODULE): (library construction):"
-	@($(LINT) -o $(LINT_MODULE)-$(OBJS_DIR) \
-		$(LINTFLAGS) $(LINTS) $(LTAIL))
-	@$(MV) llib-l$(LINT_MODULE)-$(OBJS_DIR).ln $@
-
-$(LINT_MODULE).lint:	$(MOD_LINT_LIB) $(LINT_LIB) $(GEN_LINT_LIB)
-	@-$(ECHO) "\n$(OBJS_DIR)/$(LINT_MODULE): global crosschecks:"
-	@($(LINT) $(LINTFLAGS) $(MOD_LINT_LIB) \
-		$(LINT_LIB) $(GEN_LINT_LIB) $(LTAIL))
+$(LINT_MODULE).lint:	# nothing
 
 #
 # Since assym.h is a derived file, the dependency must be explicit for
