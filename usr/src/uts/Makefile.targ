@@ -70,7 +70,6 @@ $(MODULE).check.targ:	$(BINARY) $(OBJECTS) $(EXTRA_CHECK_OBJS) $(UNIX_O) $(MODST
 #
 #	Module lint library construction targets.
 #
-#MOD_LINT_LIB	= $(LINT_LIB_DIR)/llib-l$(LINT_MODULE).ln
 MOD_LINT_LIB	= # nothing (no more lint)
 
 $(LINT_MODULE).lint:	# nothing
@@ -91,9 +90,6 @@ $(ASSYM_DEPS:%=$(OBJS_DIR)/%):	$(DSF_DIR)/$(OBJS_DIR)/assym.h
 #
 $(MODSTUBS_O):	$(MODSTUBS)
 	$(COMPILE.s) -o $@ $(MODSTUBS)
-
-$(LINTS_DIR)/modstubs.ln:	$(MODSTUBS)
-	@($(LHEAD) $(LINT.s) $(MODSTUBS) $(LTAIL))
 
 #
 # Build the source file which contains the kernel's utsname,
@@ -118,10 +114,6 @@ $(OBJS_DIR)/vers.o: $(OBJECTS)
 	    -DUTS_PLATFORM=\"$(UNAME_M)\" -o $@ $(SRC)/uts/common/os/vers.c
 	$(CTFCONVERT_O)
 	$(POST_PROCESS_O)
-
-$(LINTS_DIR)/vers.ln: $(SRC)/uts/common/os/vers.c
-	@($(LHEAD) $(LINT.c) -DUTS_RELEASE=\"\" -DUTS_VERSION=\"\" \
-	    -DUTS_PLATFORM=\"\" $(SRC)/uts/common/os/vers.c $(LTAIL))
 
 #
 #	Installation targets and rules:
@@ -356,6 +348,10 @@ lint.targ:		$(OBJS_DIR) $(LINT_TARGET)
 modlintlib.targ:	$(OBJS_DIR) $(MOD_LINT_LIB)
 
 install.targ:		$(OBJS_DIR) $(INSTALL_TARGET)
+
+lint.none:
+modlintlib.none:
+clean.lint.none:
 
 #
 # Support for Install.sh.

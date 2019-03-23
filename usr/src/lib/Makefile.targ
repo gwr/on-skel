@@ -99,15 +99,13 @@ $(DYNLIBCCC): pics .WAIT $$(PICS) $$(ALTPICS) $$(EXTPICS)
 	$(BUILDCCC.SO)
 	$(POST_PROCESS_SO)
 
-$(LINTLIB): $$(SRCS) 
-	$(LINT.c) -o $(LIBNAME) $(SRCS) > $(LINTOUT) 2>&1 
+# $(LINTLIB): # no more
 
-lintcheck: $$(SRCS)
-	$(LINT.c) $(LINTCHECKFLAGS) $(SRCS) $(LDLIBS)
+lintcheck:
 
 clobber: clean
 	-$(RM) $(CLOBBERTARGFILES)
 
 clean:
 	-$(RM) $(OBJS)
-	-$(RM) $(PICS) $(DUPLICATE_SRC) $(LINTOUT) $(LINTLIB) $(CLEANFILES)
+	-$(RM) $(PICS) $(DUPLICATE_SRC) $(CLEANFILES)
