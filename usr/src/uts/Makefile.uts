@@ -254,10 +254,10 @@ DEF_DEPS	= $(DEF_BUILDS:%=def.%)
 ALL_DEPS	= $(ALL_BUILDS:%=all.%)
 CLEAN_DEPS	= $(ALL_BUILDS:%=clean.%)
 CLOBBER_DEPS	= $(ALL_BUILDS:%=clobber.%)
-LINT_DEPS	= $(DEF_BUILDS:%=lint.%)
-MODLINTLIB_DEPS	= $(DEF_BUILDS:%=modlintlib.%)
+LINT_DEPS	= lint.none
+MODLINTLIB_DEPS	= modlintlib.none
 MODLIST_DEPS	= $(DEF_BUILDS:%=modlist.%)
-CLEAN_LINT_DEPS	= $(ALL_BUILDS:%=clean.lint.%)
+CLEAN_LINT_DEPS	= clean.lint.none
 INSTALL_DEPS	= $(DEF_BUILDS:%=install.%)
 SYM_DEPS	= $(SYM_BUILDS:%=symcheck.%)
 SISCHECK_DEPS	= $(DEF_BUILDS:%=sischeck.%)
