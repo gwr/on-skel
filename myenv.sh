@@ -36,6 +36,39 @@ export CODEMGR_WS=`git rev-parse --show-toplevel`
 # nightly itself.
 GATE=`basename ${CODEMGR_WS}`
 
+# Compilers may be specified using the following variables:
+# PRIMARY_CC	- primary C compiler
+# PRIMARY_CCC	- primary C++ compiler
+#
+# SHADOW_CCS    - list of shadow C compilers
+# SHADOW_CCCS	- list of shadow C++ compilers
+#
+# Each entry has the form <name>,<path to binary>,<style> where name is a
+# free-form name (possibly used in the makefiles to guard options), path is
+# the path to the executable.  style is the 'style' of command line taken by
+# the compiler, currently either gnu (or gcc) or sun (or cc), which is also
+# used by Makefiles to guard options.
+#
+# __SUNC and __GNUC must still be set to reflect the style of the primary
+# compiler (and to influence the default primary, otherwise)
+#
+# for example:
+# export PRIMARY_CC=gcc4,/opt/gcc/4.4.4/bin/gcc,gnu
+# export PRIMARY_CCC=gcc4,/opt/gcc/4.4.4/bin/g++,gnu
+# export SHADOW_CCS=studio12,/opt/SUNWspro/bin/cc,sun
+# export SHADOW_CCCS=studio12,/opt/SUNWspro/bin/CC,sun
+#
+# There can be several space-separated entries in SHADOW_* to run multiple
+# shadow compilers.
+#
+# To disable shadow compilation, unset SHADOW_* or set them to the empty string.
+#
+export GNUC_ROOT=/usr/gcc/7
+export PRIMARY_CC=gcc7,$GNUC_ROOT/bin/gcc,gnu
+export PRIMARY_CCC=gcc7,$GNUC_ROOT/bin/g++,gnu
+export SHADOW_CCS=gcc4,/opt/gcc/4.4.4/bin/gcc,gnu
+export SHADOW_CCCS=gcc4,/opt/gcc/4.4.4/bin/g++,gnu
+
 # Maximum number of dmake jobs.  Small WS -- keep it simple.
 export DMAKE_MAX_JOBS=4
 
