@@ -39,3 +39,5 @@ include $(SRC)/Makefile.master
 $(LICROOT)/usr/src/%: $(CODEMGR_WS)/usr/src/%
 	$(PKGDEBUG)if [ ! -d $(@D) ]; then mkdir -p $(@D); fi
 	$(PKGDEBUG)$(INS.file)
+
+all:
